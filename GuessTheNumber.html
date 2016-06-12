@@ -5,8 +5,22 @@
   <title>Guess The Number</title>
   <link href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
 </head>
-<body>
-  <script src="./GuessTheNumberController.js"></script>
-  <script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.3.3/angular.js"></script>
+<body ng-app="app">
+  <div class="container" ng-controller="GuessTheNumberController">
+    <h2>Guess The Number!</h2>
+    <p class="well lead">Adivina el número aleatorio generado por la comptuadora entre 1 y 1000</p>
+    <label>Tu número </label><input type="number" ng-model="guess" />
+    <button ng-click="verifyGuess()" class="btn btn-primary btn-sm">Verifica</button>
+    <button ng-click="initializeGame()" class="btn-warning btn-sm">Reiniciar Juego</button>
+    <p>
+      <p ng-show="deviation<0" class="alert alert-warning">Tu número es mayor</p>
+      <p ng-show="deviation>0" class="alert alert-warning">Tu número es menor</p>
+      <p ng-show="deviation===0" class="alert alert-success">Si! Ese es el número</p>
+    </p>
+    <p class="text-info">No. of guesses <span class="badge">{{noOfTries}}</span></p>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+  <script src="./js/GuessTheNumberController.js"></script>
 </body>
 </html>
